@@ -26,6 +26,9 @@ def callback(request):
     body = request.body.decode('utf-8')
     try:
         print('ok1')
+        print(body)
+        print(signature)
+
         handler.handle(body, signature)
     except InvalidSignatureError:
         HttpResponseForbidden()
