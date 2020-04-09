@@ -27,7 +27,6 @@ def callback(request):
     try:
         print('ok1')
         handler.handle(body, signature)
-        print('ok2')
     except InvalidSignatureError:
         HttpResponseForbidden()
     return HttpResponse('OK', status=200)
@@ -36,6 +35,7 @@ def callback(request):
 # オウム返し
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
+    print('ok2')
     line_bot_api.reply_message(event.reply_token,
                                TextSendMessage(text=event.message.text))
                                
