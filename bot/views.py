@@ -28,7 +28,7 @@ def callback(request):
         handler.handle(body, signature)
     except InvalidSignatureError:
         HttpResponseForbidden()
-    return HttpResponse('OK', status=200)
+    return HttpResponse('OK')
 
 
 # オウム返し
