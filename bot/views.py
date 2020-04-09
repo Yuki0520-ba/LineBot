@@ -25,10 +25,6 @@ def callback(request):
     signature = request.META['HTTP_X_LINE_SIGNATURE']
     body = request.body.decode('utf-8')
     try:
-        print('ok1')
-        print(body)
-        print(signature)
-
         handler.handle(body, signature)
     except InvalidSignatureError:
         HttpResponseForbidden()
@@ -38,7 +34,6 @@ def callback(request):
 # オウム返し
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
-    print('ok2')
     line_bot_api.reply_message(event.reply_token,
                                TextSendMessage(text=event.message.text))
                                
