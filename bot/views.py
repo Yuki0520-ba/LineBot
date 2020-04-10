@@ -34,6 +34,7 @@ def callback(request):
 # オウム返し
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
+    print('handle checked!')
     line_bot_api.reply_message(event.reply_token,
                                TextSendMessage(text=event.message.text))
                                
