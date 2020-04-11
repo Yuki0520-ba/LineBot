@@ -13,6 +13,8 @@ from linebot.models import (
 )
 import os
 
+from kansai_reply import api_reply
+
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
@@ -31,13 +33,15 @@ def callback(request):
     return HttpResponse('OK',status=200)
 
 
-# オウム返し
+# メッセージ返答
 @handler.add(MessageEvent, message=TextMessage)
 def handle_text_message(event):
     #Webhook settingsでのエラー回避
     if event.reply_token == "00000000000000000000000000000000":
         return
 
+    res=api_reply(event.message.text,'太郎')
+    print(res)
     line_bot_api.reply_message(event.reply_token,
                                TextSendMessage(text=event.message.text))
                                
