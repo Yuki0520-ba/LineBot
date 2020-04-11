@@ -41,7 +41,6 @@ def handle_text_message(event):
         return
 
     res=api_reply(event.message.text,'太郎')
-    print(res)
     line_bot_api.reply_message(event.reply_token,
-                               TextSendMessage(text=event.message.text))
+                               TextSendMessage(text=res))
                                
