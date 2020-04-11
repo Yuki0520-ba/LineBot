@@ -13,7 +13,7 @@ from linebot.models import (
 )
 import os
 
-from kansai_reply import api_reply
+from .kansai_reply import api_reply
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
